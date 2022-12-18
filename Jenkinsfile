@@ -18,7 +18,7 @@ pipeline{
         stage("deploy"){
             steps{
               sshagent(['ssh_jenkins']) {
-                  sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp2/target/WebApp2-1.0-SNAPSHOT.war root@192.168.100.5:/opt/tomcat/apache-tomcat-10.0.27/webapps/page.war"
+                  sh "sshpass -p root scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/WebApp2/target/WebApp2-1.0-SNAPSHOT.war root@192.168.100.5:/opt/tomcat/apache-tomcat-10.0.27/webapps/page.war"
                 }
             }
         }
